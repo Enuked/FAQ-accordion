@@ -1,4 +1,7 @@
 @import "../style/global.scss";
+button {
+  cursor: pointer;
+}
 
 article {
   background-color: $white-color;
@@ -8,6 +11,7 @@ article {
   margin: 0 auto;
   z-index: 1;
   left: 0;
+  font-size: 32px;
   border-radius: 10px;
   right: 0;
   width: 290px;
@@ -22,7 +26,7 @@ article {
     left: 0;
     border-radius: 10px;
     right: 0;
-    width: 537px;
+    width: 490px;
   }
 
   > h1 {
@@ -34,14 +38,14 @@ article {
     gap: 22px;
     font-size: 30px;
     img {
-      width: 20px;
+      width: 30px;
     }
   }
 
   .container {
     display: flex;
     flex-direction: column;
-    gap: 37px;
+    gap: 18px;
     > button {
       border: none;
       padding: 0;
@@ -49,30 +53,58 @@ article {
       outline: none;
     }
 
-    .drop-down {
-      font-size: 14px;
-      opacity: 0;
-      height: 0;
-      overflow: hidden;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .active {
-      height: 100%;
-      opacity: 1;
-    }
-
     .accordion {
-      display: flex;
+      + .accordion {
+        border-top: 1px solid $lightpink-color;
+      }
+      .drop-down {
+        font-size: 14px;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      &.active {
+        .button {
+          background-image: url("../../public/assets/images/icon-minus.svg");
+          background-repeat: no-repeat;
+          background-position: right;
+        }
+        .drop-down {
+          font-size: 14px;
+          opacity: 1;
+          height: 100%;
+          overflow: hidden;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          p {
+            text-align: left;
+            color: $Grayishpurple-color;
+            font-family: $font-family;
+            padding: 10px 0 0 10px;
+            font-size: 16px;
+            line-height: 1.2;
+          }
+        }
+      }
       > button {
         border: none;
         color: $darkpurple-color;
         font-family: $font-family;
         background-color: transparent;
+        justify-content: space-between;
+        background-image: url("../../public/assets/images/icon-plus.svg");
+        background-repeat: no-repeat;
+        background-position: center right;
+        width: 100%;
+        @media (min-width: 768px) {
+          padding-top: 20px;
+        }
         > span {
           color: $darkpurple-color;
           display: flex;
           gap: 25px;
+          padding: 20px 0 10px 0;
+
           text-align: left;
           font-size: 16px;
           font-family: $font-family;
@@ -80,19 +112,17 @@ article {
           font-weight: 700;
           justify-content: space-between;
           align-items: center;
+
           @media (min-width: 768px) {
-            gap: 25px;
-            justify-content: none;
             font-size: 19px;
           }
         }
-        p {
-          text-align: left;
-          color: $Grayishpurple-color;
-          font-family: $font-family;
-          padding-top: 20px;
-          font-size: 16px;
-          line-height: 1.2;
+        h2 {
+          padding-right: 70px;
+          font-size: 15px;
+          @media (min-width: 768px) {
+            padding-right: 107px;
+          }
         }
       }
     }
