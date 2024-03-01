@@ -1,7 +1,6 @@
-import plus from "../../public/assets/images/icon-plus.svg";
-import minus from "../../public/assets/images/icon-minus.svg";
-
 const accordions = document.querySelectorAll('.accordion');
+const plus = "../../public/assets/images/icon-plus.svg";
+const minus = "../../public/assets/images/icon-minus.svg";
 
 accordions.forEach((accordion) => {
   accordion.addEventListener('click', () => {
@@ -12,11 +11,13 @@ accordions.forEach((accordion) => {
     activeBodies.forEach(activeBody => {
       if (activeBody !== body) {
         activeBody.classList.remove('active');
-        img.src = plus.src; // Change the image back to plus when collapsing
+        const activeAccordion = activeBody.parentElement;
+        const activeImg = activeAccordion.querySelector('#img');
+        activeImg.src = plus; // Reset all icons to plus when collapsing
       }
     });
 
     body.classList.toggle('active');
-    img.src = body.classList.contains('active') ? minus.src : plus.src; // Toggle image based on active class
+    img.src = body.classList.contains('active') ? minus : plus; // Toggle image based on active class
   });
 });
